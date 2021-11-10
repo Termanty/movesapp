@@ -1,5 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Poppins&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --app-name-font: "Bangers", cursive;
+  --app-body-font: "Poppins", sans-serif;
+}
+
+div {
+  font-family: var(--app-name-font), var(--app-body-font);
+}
+
+h1 {
+  font-family: var(--app-name-font);
 }
