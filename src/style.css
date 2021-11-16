@@ -58,6 +58,31 @@ h1 {
 /* == MAIN == */
 
 /* == SEARCH == */
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  overflow-y: scroll;
+  height: 70vh;
+}
+
+.search input {
+  width: 60%;
+  padding: 1vh;
+  margin-bottom: 3vh;
+  border-radius: 20px;
+  padding-left: 6vw;
+}
+
+.smallMoveCard {
+  display: flex;
+  flex-direction: row;
+  margin: 2vh;
+  border-bottom: #008e7b solid 1px;
+  padding-bottom: 0.5vh;
+}
 
 /* == DANCEMOVE SINGLE == */
 
