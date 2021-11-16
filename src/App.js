@@ -4,7 +4,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Component } from "react";
-
+import Search from "./components/Search";
 class App extends Component {
   state = {
     moves: [],
@@ -38,7 +38,7 @@ class App extends Component {
         <div className="tempContainer">
           <Header />
           <p>We have Dance Move page here</p>
-          {/* <Search /> ??? Is this correct name for search */}
+          {<Search />}
           <Footer />
         </div>
 
