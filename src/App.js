@@ -11,15 +11,13 @@ class App extends Component {
     moves: [],
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
     fetch("http://localhost:3001/moves")
       .then((response) => response.json())
       .then((moveData) => {
         this.setState({ moves: moveData });
-        console.log(moveData);
-        console.log(this.state.moves);
       });
-  };
+  }
 
   render() {
     return (
