@@ -5,7 +5,6 @@ import Card from "./SmallMoveCard";
 const Search = (props) => {
   return (
     <div className="search">
-      {props.searchMoves}
       <div className="searchWrapper">
         <input
           value="search"
