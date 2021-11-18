@@ -5,18 +5,21 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Component } from "react";
 import Search from "./components/Search";
+
 class App extends Component {
   state = {
     moves: [],
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     fetch("http://localhost:3001/moves")
       .then((response) => response.json())
       .then((moveData) => {
         this.setState({ moves: moveData });
+        console.log(moveData);
+        console.log(this.state.moves);
       });
-  }
+  };
 
   render() {
     return (
@@ -36,9 +39,14 @@ class App extends Component {
       */}
         <h1 className="tepmSectionH1">SEARCH</h1>
         <div className="tempContainer">
-          {/* <Header /> 
+          {/* <Header />
           <p>We have Dance Move page here</p> */}
-          {<Search />}
+          {
+            <Search
+              searchMoves={() => this.componentDidMount()}
+              dancelist={this.state.moves}
+            />
+          }
           <Footer />
         </div>
 
