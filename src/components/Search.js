@@ -1,11 +1,11 @@
 import React from "react";
 import Card from "./SmallMoveCard";
-import DanceList from "../db.json";
 // import DanceMovePage from "./DanceMovePage";
 
-const Search = () => {
+const Search = (props) => {
   return (
     <div className="search">
+      {props.searchMoves}
       <div className="searchWrapper">
         <input
           value="search"
@@ -13,7 +13,7 @@ const Search = () => {
         />
       </div>
       <div>
-        {DanceList.moves.map((c) => (
+        {props.dancelist.map((c) => (
           <Card
             move={c.Move}
             creator={c.Creator}
