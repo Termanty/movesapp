@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./SmallMoveCard";
-// import DanceMovePage from "./DanceMovePage";
+import DanceMove from "./danceMoveCard";
 
 class Search extends Component {
   state = {
@@ -37,11 +37,20 @@ class Search extends Component {
       return result;
     });
 
+    let showDanceMoveCard = danceFilter.map((searchedKey) => (
+      <DanceMove
+        move={searchedKey.Move}
+        creator={searchedKey.Creator}
+        info={searchedKey.HOX}
+      />
+    ));
+
     let list = danceFilter.map((c) => (
       <Card
+        onClick={showDanceMoveCard}
+        id={c.Move}
         move={c.Move}
         creator={c.Creator}
-        // moveCard={<DanceMovePage />}
       />
     ));
 

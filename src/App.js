@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Component } from "react";
 import Search from "./components/Search";
 import EditMove from "./components/EditMove";
+import DanceMove from "./components/danceMoveCard";
 
 class App extends Component {
   state = {
@@ -38,8 +39,6 @@ class App extends Component {
       */}
         <h1 className="tepmSectionH1">SEARCH</h1>
         <div className="tempContainer">
-          {/* <Header />
-          <p>We have Dance Move page here</p> */}
           <Search dancelist={this.state.moves} />
           <Footer />
         </div>
@@ -49,9 +48,7 @@ class App extends Component {
       */}
         <h1 className="tepmSectionH1">DANCE MOVE</h1>
         <div className="tempContainer">
-          <Header />
-          <p>We have Dance Move page here</p>
-          {/* <DanceMove /> */}
+          <DanceMove moves={this.state.moves} />
           <Footer />
         </div>
 
