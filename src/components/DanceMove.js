@@ -6,13 +6,22 @@ const DanceMove = ({ dancelist }) => {
   let move = dancelist.find((move) => move.Id === +params.id);
 
   let notes;
-  let text;
+  let notesText;
+  let linkText;
+  let link;
 
   if (!move?.HOX) {
     notes = "";
   } else {
-    text = "Notes: ";
+    notesText = "Notes: ";
     notes = move?.HOX;
+  }
+
+  if (!move?.Link) {
+    link = "";
+  } else {
+    linkText = "Click to Instagram video!";
+    link = move?.Link;
   }
 
   return (
@@ -22,10 +31,12 @@ const DanceMove = ({ dancelist }) => {
       <h3>{move?.Creator}</h3>
       <div id="notesAndIGWrapper">
         <p>
-          {text}
+          {notesText}
           <span>{notes}</span>
         </p>
-        <p id="IG">{move?.Link}</p>
+        <a href={link} target="_blank" rel="noreferrer noopener" id="IG">
+          {linkText}
+        </a>
       </div>
     </div>
   );
