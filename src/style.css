@@ -205,7 +205,6 @@ input {
 .DanceMove h3,
 .DanceMove p {
   margin-top: 0.5vh;
-  width: 60%;
   padding: 1vh;
 }
 
@@ -233,6 +232,7 @@ span {
   margin-bottom: 2vh;
   margin-top: 4vh;
   height: 70vh;
+  color: var(--black);
 }
 
 /* == EDIT MOVE == */
