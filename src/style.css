@@ -226,10 +226,8 @@ input {
 }
 
 #IG {
-  overflow-x: scroll;
   margin-bottom: 2vh;
-  height: 70vh;
-  width: 90%;
+  color: var(--black);
 }
 
 /* == EDIT MOVE == */

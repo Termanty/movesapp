@@ -15,11 +15,11 @@ const DanceMove = ({ dancelist }) => {
       <h3>{move?.Move}</h3>
       <h3>{move?.Creator}</h3>
       <p>{move?.HOX}</p>
-      <p id="IG">{move?.Link}</p>
+      <a href={move?.Link} target="_blank" rel="noreferrer noopener" id="IG">
+        Click to Instagram video!
+      </a>
       <Link to={"/edit/" + params.id}>
-
         <button>edit</button>
-
       </Link>
     </div>
   );
