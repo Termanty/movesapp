@@ -18,7 +18,7 @@ This application is build for specific dance group to help them to keep track wh
 You can start JSON-server with this command:
 
 ```zsh
-npx json-server --port=3001 --watch db.json
+npm run server
 ```
 
 Server will use db.json file as it's data storage.
