@@ -1,36 +1,43 @@
 import React, { Component } from "react";
+import SavedSuccessfully from "./SavedSuccessfully";
 
 const baseURL = "http://localhost:3001/moves/";
 
 class EditMove extends Component {
-  backToMoves = this.props.backToMoves;
+  navigate = this.props.navigate;
   move = this.props.dancelist.find((move) => move.Id === this.props.id);
   state = {
-    Id: this.props.id,
-    Move: this.move?.Move,
-    Creator: this.move?.Creator || "",
-    HOX: this.move?.HOX || "",
-    Link: this.move?.Link || "",
+    input: {
+      Id: this.props.id,
+      Move: this.move?.Move,
+      Creator: this.move?.Creator || "",
+      HOX: this.move?.HOX || "",
+      Link: this.move?.Link || "",
+    },
+    showSavedSuccessfully: false,
   };
 
   inputHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      input: { ...this.state.input, [e.target.name]: e.target.value },
+    });
   };
 
   addEditedMove = (e) => {
     e.preventDefault();
-    fetch(baseURL + this.state.Id, {
+    fetch(baseURL + this.state.input.Id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(this.state.input),
     })
+      .then(this.props.getAllMoves)
       .then(() => {
-        this.props.getAllMoves();
-      })
-      .then(() => {
-        this.backToMoves("/moves/" + this.state.Id)
+        let timeoutId = setTimeout(() => {
+          this.navigate("/moves/" + this.state.input.Id);
+        }, 5000);
+        this.setState({ showSavedSuccessfully: true, timeoutId: timeoutId });
       })
       .catch((error) => {
         console.log("this is the error", error);
@@ -50,31 +57,31 @@ class EditMove extends Component {
             className="edit_move_input"
             required
             name="Move"
-            value={this.state.Move}
+            value={this.state.input.Move}
             onChange={this.inputHandler}
           />
           <input
             type="text"
-            placeholder="ADD/EDIT creator name"
+            placeholder="ADD creator name"
             className="edit_move_input"
             name="Creator"
-            value={this.state.Creator}
+            value={this.state.input.Creator}
             onChange={this.inputHandler}
           />
           <input
-            placeholder="ADD/EDIT notes"
+            placeholder="ADD notes"
             className="edit_move_input"
             maxLength="100"
             name="HOX"
-            value={this.state.HOX}
+            value={this.state.input.HOX}
             onChange={this.inputHandler}
           />
           <input
             type="text"
-            placeholder="ADD/EDIT instagram link"
+            placeholder="ADD instagram link"
             className="edit_move_input"
             name="Link"
-            value={this.state.Link}
+            value={this.state.input.Link}
             onChange={this.inputHandler}
           />
           <div>
@@ -87,6 +94,12 @@ class EditMove extends Component {
             </button>
           </div>
         </form>
+        {this.state.showSavedSuccessfully && (
+          <SavedSuccessfully
+            path={"/moves/" + this.state.input.Id}
+            timeoutId={this.state.timeoutId}
+          />
+        )}
       </div>
     );
   }
