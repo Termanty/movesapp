@@ -187,9 +187,9 @@ input {
 .search input {
   width: 70%;
   padding: 0.8vh;
-  padding-left: 3vw;
+  padding-left: 3 vw;
   border-radius: 20px;
-  margin: 2vh;
+  margin: 2vh 6vh 2vh 0;
   font-family: var(--app-body-font);
   font-size: 16px;
 }
@@ -206,6 +206,10 @@ input {
 .ListItem:hover {
   cursor: pointer;
   box-shadow: var(--keppel-green) 0px 6px 0px 0px;
+}
+.insta {
+  font-size: 2em;
+  color: var(--grey);
 }
 
 /* == DANCEMOVE  == */
