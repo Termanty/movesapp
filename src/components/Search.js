@@ -36,6 +36,7 @@ class Search extends Component {
             move={filteredDanceMove.Move}
             creator={filteredDanceMove.Creator}
             Id={filteredDanceMove.Id}
+            link={filteredDanceMove.Link}
           />
         ))}
       </div>
