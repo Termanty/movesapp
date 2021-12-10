@@ -1,7 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEllipsisH,
+  faEllipsisV,
+  faInfoCircle,
+  faShareAltSquare,
+  faQuestionCircle,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 function Menu() {
@@ -28,8 +35,34 @@ function Menu() {
         onClick={clickHandler}
       />
       <div className={classes}>
-        <p>about</p>
-        <p>sign out</p>
+        <div className="icons-wrapper">
+          <div className="icon_and_name_wrapper">
+            <FontAwesomeIcon icon={faInfoCircle} className="individual-icon" />
+
+            <p>information</p>
+          </div>
+
+          <div className="icon_and_name_wrapper">
+            <FontAwesomeIcon
+              icon={faShareAltSquare}
+              className="individual-icon"
+            />
+            <p>share link</p>
+          </div>
+
+          <div className="icon_and_name_wrapper">
+            <FontAwesomeIcon
+              icon={faQuestionCircle}
+              className="individual-icon"
+            />
+            <p>support</p>
+          </div>
+
+          <div className="icon_and_name_wrapper">
+            <FontAwesomeIcon icon={faSignOutAlt} className="individual-icon" />
+            <p>sign out</p>
+          </div>
+        </div>
       </div>
     </div>
   );

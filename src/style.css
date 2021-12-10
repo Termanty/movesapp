@@ -388,10 +388,30 @@ span {
   top: 23px;
   left: 15px;
   z-index: 10;
+  width: 180px;
+  height: auto;
 }
 
 .hide {
   display: none;
+}
+
+.icons-wrapper {
+  padding: 10px;
+}
+
+p {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.individual-icon {
+  margin-left: 5px;
+}
+
+.icon_and_name_wrapper {
+  padding: 10px;
+  color: var(--grey);
 }
 
 /* == SAVED SUCCESSFULLY == */
