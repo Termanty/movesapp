@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsisH,
-  faEllipsisV,
   faInfoCircle,
   faShareAltSquare,
   faQuestionCircle,
