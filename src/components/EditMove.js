@@ -71,7 +71,7 @@ class EditMove extends Component {
           <input
             placeholder="ADD notes"
             className="edit_move_input"
-            maxLength="100"
+            maxLength="25"
             name="HOX"
             value={this.state.input.HOX}
             onChange={this.inputHandler}
