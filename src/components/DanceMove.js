@@ -6,7 +6,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const DanceMove = ({ dancelist }) => {
   const params = useParams();
-  let move = dancelist.find((move) => move.Id === +params.id);
+  let move = dancelist.moves.find((move) => move.Id === +params.id);
 
   let notes;
   let notesText;

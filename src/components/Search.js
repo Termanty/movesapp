@@ -13,7 +13,9 @@ class Search extends Component {
   };
 
   render() {
-    let danceFilter = this.props.dancelist.filter((dm) => {
+    console.log(this.props.dancelist);
+
+    let danceFilter = this.props.dancelist.moves.filter((dm) => {
       const key = this.state.searchedKey.toLowerCase();
       return (
         dm.Move.toLowerCase().includes(key) ||

@@ -9,6 +9,7 @@ import EditMove from "./components/EditMove";
 import Footer from "./components/Footer";
 import DanceMove from "./components/DanceMove";
 import Menu from "./components/Menu";
+import danceMoves from "./db.json";
 
 const EditMoveWrapper = (props) => {
   const navigate = useNavigate();
@@ -39,13 +40,10 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/search" element={<Search dancelist={danceMoves} />} />
           <Route
-            path="/search"
-            element={<Search dancelist={this.state.moves} />}
-          />
-          <Route
-            path={"/moves"}
-            element={<DanceMove dancelist={this.state.moves} />}
+            path={"/moves/:id"}
+            element={<DanceMove dancelist={danceMoves} />}
           />
           <Route
             path="/new"
@@ -55,7 +53,7 @@ class App extends Component {
             path="/edit/:id"
             element={
               <EditMoveWrapper
-                dancelist={this.state.moves}
+                dancelist={danceMoves.moves}
                 getAllMoves={this.getAllMoves}
               />
             }
