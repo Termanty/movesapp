@@ -44,7 +44,7 @@ class App extends Component {
             element={<Search dancelist={this.state.moves} />}
           />
           <Route
-            path={"/moves/:id"}
+            path={"/moves"}
             element={<DanceMove dancelist={this.state.moves} />}
           />
           <Route
