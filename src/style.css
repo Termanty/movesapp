@@ -186,6 +186,7 @@ input {
   justify-content: right;
   padding-top: 1vh;
   margin-bottom: 8vh;
+  z-index: 2;
 }
 
 .search input {
@@ -207,8 +208,8 @@ input {
   flex-direction: row;
   
   align-items: center; */
-  width: 380px;
-  padding: 10px;
+  width: 300px;
+  padding: 15px;
   /* height: 200px; */
   margin: 8px;
   /* border-bottom: var(--keppel-green-dark) solid 1px; */
@@ -220,21 +221,24 @@ input {
   border-radius: 18px;
   /*   padding: 5px; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
 }
 
 .ListItem:hover {
   cursor: pointer;
   box-shadow: var(--keppel-green) 0px 6px 0px 0px;
 }
+
+.ListItem p {
+  margin-left: 7vw;
+}
+
 .insta {
   font-size: 1.5em;
   color: black;
   position: absolute;
-  right: 35px;
-}
-
-span {
-  margin-right: 10px;
+  z-index: 0;
+  left: 4vw;
 }
 
 a {
@@ -253,7 +257,7 @@ a {
   align-items: center;
   position: absolute;
   overflow: hidden;
-  padding-top: 25vh;
+  padding-top: 15vh;
 }
 
 .squre-pen {
@@ -296,8 +300,10 @@ a {
   overflow-x: scroll;
   margin-bottom: 2vh;
   margin-top: 4vh;
+  padding: 11vh 5vw;
   height: 70vh;
   color: var(--black);
+  background-color: var(--rubber-red-light);
 }
 
 /* == EDIT MOVE == */

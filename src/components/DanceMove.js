@@ -21,7 +21,7 @@ const DanceMove = ({ dancelist }) => {
   }
 
   if (!move?.Link) {
-    linkText = "No Instagram link added.";
+    linkText = "Instagram video will be here";
   } else {
     linkText = "Click to Instagram video!";
     link = move?.Link;
