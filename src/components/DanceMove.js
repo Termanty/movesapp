@@ -3,10 +3,34 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const DanceMove = ({ dancelist }) => {
   const params = useParams();
   let move = dancelist.moves.find((move) => move.Id === +params.id);
+
+  /* HERE DOING THE API CALL 
+  
+  const [IGvideo, setIGvideo] = useState([]);
+  const APIend = move?.Link;
+
+   useEffect(() => {
+    axios
+      .get("https://graph.facebook.com/v12.0/instagram_oembed?url=" + APIend)
+      .catch((error) => {
+        console.log(error);
+      })
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+
+        Promise(data).then((data) => {
+          setIGvideo(data);
+        });
+      });
+    console.log(IGvideo);
+  }, []); */
 
   let notes;
   let notesText;
@@ -23,8 +47,9 @@ const DanceMove = ({ dancelist }) => {
   if (!move?.Link) {
     linkText = "Instagram video will be here";
   } else {
-    linkText = "Click to Instagram video!";
-    link = move?.Link;
+    console.log(move?.Link);
+    link = move?.Link; //THE VIDEO WILL COME HERE IGvideo;
+    linkText = move?.Link;
   }
 
   return (
@@ -42,7 +67,12 @@ const DanceMove = ({ dancelist }) => {
           {notesText}
           <span>{notes}</span>
         </p>
-        <a href={link} target="_blank" rel="noreferrer noopener" id="IG">
+        <a
+          href={link}
+          /* VIDEO WILL APPEAR HERE */ target="_blank"
+          rel="noreferrer noopener"
+          id="IG"
+        >
           {linkText}
         </a>
       </div>
