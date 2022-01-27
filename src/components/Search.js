@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ListItem from "./ListItem";
 
-function Search({ dancelist }) {
+const Search = ({ dancelist }) => {
   const [searchkey, setSearchKey] = useState("");
 
   const searchInputHandler = (event) => {
@@ -35,6 +35,6 @@ function Search({ dancelist }) {
       ))}
     </div>
   );
-}
+};
 
 export default Search;
