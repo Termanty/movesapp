@@ -1,47 +1,40 @@
-import React, { Component } from "react";
+import { useState } from "react";
 import ListItem from "./ListItem";
 
-class Search extends Component {
-  state = {
-    searchedKey: "",
+function Search({ dancelist }) {
+  const [searchkey, setSearchKey] = useState("");
+
+  const searchInputHandler = (event) => {
+    setSearchKey(event.target.value);
   };
 
-  searchInputHandler = (event) => {
-    this.setState({
-      searchedKey: event.target.value,
-    });
-  };
+  let filteredDanceMoves = dancelist.filter((dancemove) => {
+    const key = searchkey.toLowerCase();
+    const move = dancemove.Move.toLowerCase();
+    const creator = dancemove.Creator.toLowerCase();
+    return move.includes(key) || creator.includes(key);
+  });
 
-  render() {
-    let danceFilter = this.props.dancelist.filter((dm) => {
-      const key = this.state.searchedKey.toLowerCase();
-      return (
-        dm.Move.toLowerCase().includes(key) ||
-        dm.Creator.toLowerCase().includes(key)
-      );
-    });
-
-    return (
-      <div className="search">
-        <div className="searchWrapper">
-          <input
-            placeholder="search"
-            onChange={this.searchInputHandler}
-            className="searchValue" // onClick={deleteSearch}
-          />
-        </div>
-        {danceFilter.map((filteredDanceMove) => (
-          <ListItem
-            key={filteredDanceMove.Id}
-            move={filteredDanceMove.Move}
-            creator={filteredDanceMove.Creator}
-            Id={filteredDanceMove.Id}
-            link={filteredDanceMove.Link}
-          />
-        ))}
+  return (
+    <div className="search">
+      <div className="searchWrapper">
+        <input
+          placeholder="search"
+          onChange={searchInputHandler}
+          className="searchValue" // onClick={deleteSearch}
+        />
       </div>
-    );
-  }
+      {filteredDanceMoves.map((dancemove) => (
+        <ListItem
+          key={dancemove.Id}
+          move={dancemove.Move}
+          creator={dancemove.Creator}
+          Id={dancemove.Id}
+          link={dancemove.Link}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Search;
