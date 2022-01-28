@@ -10,12 +10,6 @@ import Footer from "./components/Footer";
 import DanceMove from "./components/DanceMove";
 import Menu from "./components/Menu";
 
-const EditMoveWrapper = (props) => {
-  const navigate = useNavigate();
-  const params = useParams();
-  return <EditMove navigate={navigate} id={+params.id} {...props} />;
-};
-
 class App extends Component {
   state = {
     moves: [],
@@ -54,7 +48,7 @@ class App extends Component {
           <Route
             path="/edit/:id"
             element={
-              <EditMoveWrapper
+              <EditMove
                 dancelist={this.state.moves}
                 getAllMoves={this.getAllMoves}
               />
