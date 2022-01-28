@@ -1,108 +1,105 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import SavedSuccessfully from "./SavedSuccessfully";
 
 const baseURL = "http://localhost:3001/moves/";
 
-class EditMove extends Component {
-  navigate = this.props.navigate;
-  move = this.props.dancelist.find((move) => move.Id === this.props.id);
-  state = {
-    input: {
-      Id: this.props.id,
-      Move: this.move?.Move,
-      Creator: this.move?.Creator || "",
-      HOX: this.move?.HOX || "",
-      Link: this.move?.Link || "",
-    },
-    showSavedSuccessfully: false,
+const EditMove = ({ dancelist, getAllMoves }) => {
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const move = dancelist.find((dancemove) => dancemove.Id === +params.id);
+  const startingInput = {
+    Id: +params.id,
+    Move: move?.Move,
+    Creator: move?.Creator || "",
+    HOX: move?.HOX || "",
+    Link: move?.Link || "",
   };
 
-  inputHandler = (e) => {
-    this.setState({
-      input: { ...this.state.input, [e.target.name]: e.target.value },
-    });
+  const [input, setInput] = useState(startingInput);
+  const [showSaved, setShowSaved] = useState(false);
+
+  const inputHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  addEditedMove = (e) => {
+  let timeoutId;
+  const addEditedMove = (e) => {
     e.preventDefault();
-    fetch(baseURL + this.state.input.Id, {
+    fetch(baseURL + input.Id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state.input),
+      body: JSON.stringify(input),
     })
-      .then(this.props.getAllMoves)
+      .then(getAllMoves)
       .then(() => {
-        let timeoutId = setTimeout(() => {
-          this.navigate("/moves/" + this.state.input.Id);
+        timeoutId = setTimeout(() => {
+          navigate("/moves/" + input.Id);
         }, 5000);
-        this.setState({ showSavedSuccessfully: true, timeoutId: timeoutId });
+        setShowSaved(true);
       })
       .catch((error) => {
         console.log("this is the error", error);
       });
   };
 
-  render() {
-    return (
-      <div className="editmove">
-        <div>
-          <h1 className="editmove_header">Edit Move</h1>
-        </div>
-        <form className="editmove_form">
-          <input
-            type="text"
-            placeholder="EDIT move name"
-            className="edit_move_input"
-            required
-            name="Move"
-            value={this.state.input.Move}
-            onChange={this.inputHandler}
-          />
-          <input
-            type="text"
-            placeholder="ADD creator name"
-            className="edit_move_input"
-            name="Creator"
-            value={this.state.input.Creator}
-            onChange={this.inputHandler}
-          />
-          <input
-            placeholder="ADD notes"
-            className="edit_move_input"
-            maxLength="25"
-            name="HOX"
-            value={this.state.input.HOX}
-            onChange={this.inputHandler}
-          />
-          <input
-            type="text"
-            placeholder="ADD instagram link"
-            className="edit_move_input"
-            name="Link"
-            value={this.state.input.Link}
-            onChange={this.inputHandler}
-          />
-          <div>
-            <button
-              type="submit"
-              className="saveChangesButton"
-              onClick={this.addEditedMove}
-            >
-              SAVE CHANGES
-            </button>
-          </div>
-        </form>
-        {this.state.showSavedSuccessfully && (
-          <SavedSuccessfully
-            path={"/moves/" + this.state.input.Id}
-            timeoutId={this.state.timeoutId}
-          />
-        )}
+  return (
+    <div className="editmove">
+      <div>
+        <h1 className="editmove_header">Edit Move</h1>
       </div>
-    );
-  }
-}
+      <form className="editmove_form">
+        <input
+          type="text"
+          placeholder="EDIT move name"
+          className="edit_move_input"
+          required
+          name="Move"
+          value={input.Move}
+          onChange={inputHandler}
+        />
+        <input
+          type="text"
+          placeholder="ADD creator name"
+          className="edit_move_input"
+          name="Creator"
+          value={input.Creator}
+          onChange={inputHandler}
+        />
+        <input
+          placeholder="ADD notes"
+          className="edit_move_input"
+          maxLength="25"
+          name="HOX"
+          value={input.HOX}
+          onChange={inputHandler}
+        />
+        <input
+          type="text"
+          placeholder="ADD instagram link"
+          className="edit_move_input"
+          name="Link"
+          value={input.Link}
+          onChange={inputHandler}
+        />
+        <div>
+          <button
+            type="submit"
+            className="saveChangesButton"
+            onClick={addEditedMove}
+          >
+            SAVE CHANGES
+          </button>
+        </div>
+      </form>
+      {showSaved && (
+        <SavedSuccessfully path={"/moves/" + input.Id} timeoutId={timeoutId} />
+      )}
+    </div>
+  );
+};
 
 export default EditMove;
