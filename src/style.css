@@ -116,8 +116,9 @@ h1 {
 }
 .ves {
   position: absolute;
-  transform: translate(-5px, 24px);
+  transform: translate(100px, 24px);
   font-style: normal;
+  font-size: 10rem;
 }
 
 .logo {
