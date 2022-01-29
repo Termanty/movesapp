@@ -297,13 +297,13 @@ a {
 }
 
 #IG {
-  overflow-x: scroll;
   margin-bottom: 2vh;
   margin-top: 4vh;
-  padding: 11vh 5vw;
   height: 70vh;
+  width: 60%;
   color: var(--black);
   background-color: var(--rubber-red-light);
+  overflow-x: auto;
 }
 
 /* == EDIT MOVE == */
@@ -440,7 +440,7 @@ a {
 
 .menu-icon {
   position: fixed;
-  top: 23px;
+  top: 18px;
   left: 15px;
   z-index: 10;
   width: 180px;
