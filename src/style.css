@@ -95,7 +95,7 @@ body {
 h1 {
   font-family: var(--app-name-font);
   color: #6ff2dc;
-  font-size: 120px;
+  font-size: 100px;
   letter-spacing: 2px;
   font-weight: normal;
 }
@@ -111,18 +111,17 @@ h1 {
 
 .ce {
   position: absolute;
-  transform: rotate(335deg) translate(-2px, 2px);
+  transform: rotate(335deg) translate(-10px, 40px);
   font-style: normal;
 }
 .ves {
   position: absolute;
-  transform: translate(100px, 24px);
+  transform: translate(50px, 10px);
   font-style: normal;
-  font-size: 10rem;
 }
 
 .logo {
-  transform: scale(0.7);
+  transform: scale(0.4) translate(150px, 10px);
 }
 
 label {
