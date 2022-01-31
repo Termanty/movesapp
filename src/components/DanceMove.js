@@ -30,7 +30,7 @@ const DanceMove = ({ dancelist }) => {
         });
       });
     console.log(IGvideo);
-  }, []);
+  }, [APIend, IGvideo]);
 
   let notes;
   let notesText;
