@@ -3,19 +3,19 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-// import axios from "axios";
-// import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const DanceMove = ({ dancelist }) => {
   const params = useParams();
   let move = dancelist.moves.find((move) => move.Id === +params.id);
 
-  /* HERE DOING THE API CALL 
-  
+  /* HERE DOING THE API CALL  */
+
   const [IGvideo, setIGvideo] = useState([]);
   const APIend = move?.Link;
 
-   useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://graph.facebook.com/v12.0/instagram_oembed?url=" + APIend)
       .catch((error) => {
@@ -30,7 +30,7 @@ const DanceMove = ({ dancelist }) => {
         });
       });
     console.log(IGvideo);
-  }, []); */
+  }, []);
 
   let notes;
   let notesText;
@@ -47,8 +47,8 @@ const DanceMove = ({ dancelist }) => {
   if (!move?.Link) {
     linkText = "Instagram video will be here";
   } else {
-    console.log(move?.Link);
-    link = move?.Link; //THE VIDEO WILL COME HERE IGvideo;
+    console.log(IGvideo);
+    link = IGvideo; //THE VIDEO WILL COME HERE IGvideo;
     linkText = move?.Link;
   }
 
