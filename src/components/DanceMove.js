@@ -18,7 +18,7 @@ const DanceMove = ({ dancelist }) => {
   useEffect(() => {
     axios
       .get(
-        "https://graph.facebook.com/v12.0/instagram_oembed?url=https://www.instagram.com/p/CXUe-9fjwa-/"
+        "https://graph.facebook.com/v12.0/instagram_oembed?url=https://www.instagram.com/tv/CXUe-9fjwa-/?utm_source=ig_web_copy_link"
       )
       .catch((error) => {
         console.log(error);
