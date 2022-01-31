@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import { useState, useEffect } from "react";
+//import axios from "axios";
+//import { useState, useEffect } from "react";
+import IGvideo from "./IGvideo";
 
 const DanceMove = ({ dancelist }) => {
   const params = useParams();
   let move = dancelist.moves.find((move) => move.Id === +params.id);
 
-  /* HERE DOING THE API CALL  */
+  /* HERE DOING THE API CALL  
 
   const [IGvideo, setIGvideo] = useState([]);
   const APIend = move?.Link;
@@ -33,7 +34,7 @@ const DanceMove = ({ dancelist }) => {
       });
     console.log(IGvideo);
   }, [APIend, IGvideo]);
-
+*/
   let notes;
   let notesText;
   let linkText;
@@ -77,6 +78,7 @@ const DanceMove = ({ dancelist }) => {
         >
           {linkText}
         </a>
+        <IGvideo />
       </div>
     </div>
   );
