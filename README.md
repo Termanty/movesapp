@@ -10,6 +10,7 @@ This application is build for specific dance group to help them to keep track wh
 - JS
 - CSS
 - React
+- Facebook Graph API
 
 ## How to run the app
 
