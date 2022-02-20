@@ -3,15 +3,33 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-const DanceMove = ({ dancelist }) => {
+function DanceMove({ dancelist }) {
+  const [video, setVideo] = useState();
+
+  function getVideo(link) {
+    window.FB.api(
+      "/instagram_oembed",
+      "GET",
+      {
+        url: link,
+        access_token:
+          "EAAHDvEqItj8BAJepSBdT2zFsHwcFabwKvxF5pI9j8540TElacZCm8uODeijtt5c5YBXWtoSyU2IC17bRRszgsT9mGpOEcVf9sZC7XWOlQPhjOVCEY1OZBIsbuAAaMVVxpIUcMYhs8VotPc6AG1YMkOxSC2utoSO1mCQRzbwNQDnZBIVo8H9LeQfLEEVZAFnKQ9YrPfCMuZA90FouiEMSAflqyG2ZBqDBRmccEiGIFDsyYCDVKVX6ZAE9",
+      },
+      function (response) {
+        setVideo(response.html);
+      }
+    );
+  }
+
   const params = useParams();
   let move = dancelist.find((move) => move.Id === +params.id);
 
   let notes;
   let notesText;
-  let linkText;
   let link;
+  let videoOrText;
 
   if (!move?.HOX) {
     notesText = "No notes added.";
@@ -21,9 +39,10 @@ const DanceMove = ({ dancelist }) => {
   }
 
   if (!move?.Link) {
-    linkText = "No Instagram link added.";
+    videoOrText = "No Instagram link added.";
   } else {
-    linkText = "Click to Instagram video!";
+    getVideo(move.Link);
+    videoOrText = video;
     link = move?.Link;
   }
 
@@ -43,11 +62,11 @@ const DanceMove = ({ dancelist }) => {
           <span>{notes}</span>
         </p>
         <a href={link} target="_blank" rel="noreferrer noopener" id="IG">
-          {linkText}
+          {videoOrText}
         </a>
       </div>
     </div>
   );
-};
+}
 
 export default DanceMove;
