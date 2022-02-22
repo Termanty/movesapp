@@ -9,6 +9,7 @@ import EditMove from "./components/EditMove";
 import Footer from "./components/Footer";
 import DanceMove from "./components/DanceMove";
 import Menu from "./components/Menu";
+require("dotenv").config();
 
 const App = () => {
   const [moves, setMoves] = useState([]);
