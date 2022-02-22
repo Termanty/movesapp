@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import parse from "html-react-parser";
 
 function DanceMove({ dancelist }) {
   const [video, setVideo] = useState();
@@ -14,8 +15,7 @@ function DanceMove({ dancelist }) {
       "GET",
       {
         url: link,
-        access_token:
-          "EAAHDvEqItj8BAJepSBdT2zFsHwcFabwKvxF5pI9j8540TElacZCm8uODeijtt5c5YBXWtoSyU2IC17bRRszgsT9mGpOEcVf9sZC7XWOlQPhjOVCEY1OZBIsbuAAaMVVxpIUcMYhs8VotPc6AG1YMkOxSC2utoSO1mCQRzbwNQDnZBIVo8H9LeQfLEEVZAFnKQ9YrPfCMuZA90FouiEMSAflqyG2ZBqDBRmccEiGIFDsyYCDVKVX6ZAE9",
+        access_token: process.env.REACT_APP_access_token,
       },
       function (response) {
         setVideo(response.html);
@@ -62,7 +62,7 @@ function DanceMove({ dancelist }) {
           <span>{notes}</span>
         </p>
         <a href={link} target="_blank" rel="noreferrer noopener" id="IG">
-          {videoOrText}
+          {parse(`${videoOrText}`)}
         </a>
       </div>
     </div>
