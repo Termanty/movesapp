@@ -17,10 +17,16 @@ const AddMove = ({ getAllMoves }) => {
 
   const addMoveSubmitHandler = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/moves", {
+    const dataForBackend = {
+      movename: inputData.Move,
+      creator: inputData.Creator,
+      hox: inputData.HOX,
+      link: inputData.Link,
+    };
+    fetch("http://localhost:4000/addNew", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(inputData),
+      body: JSON.stringify(dataForBackend),
     })
       .then(getAllMoves)
       .then(() => {
