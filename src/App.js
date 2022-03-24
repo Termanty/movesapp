@@ -15,10 +15,18 @@ const App = () => {
   const [moves, setMoves] = useState([]);
 
   const getAllMoves = () => {
-    fetch("http://localhost:3001/moves/")
+    fetch("http://localhost:4000/allMoves/")
       .then((response) => response.json())
       .then((data) => {
-        setMoves(data);
+        const cleanedData = data.map((move) => ({
+          Id: move.id,
+          Move: move.movename,
+          Creator: move.creator || "",
+          HOX: move.hox || "",
+          Link: move.ling || "",
+        }));
+        console.log(cleanedData);
+        setMoves(cleanedData);
       });
   };
 
