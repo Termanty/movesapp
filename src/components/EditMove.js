@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import SavedSuccessfully from "./SavedSuccessfully";
 
-const baseURL = "http://localhost:3001/moves/";
+const baseURL = "http://localhost:4000/updateMove";
 
 const EditMove = ({ dancelist, getAllMoves }) => {
   const navigate = useNavigate();
@@ -27,12 +27,19 @@ const EditMove = ({ dancelist, getAllMoves }) => {
   let timeoutId;
   const addEditedMove = (e) => {
     e.preventDefault();
-    fetch(baseURL + input.Id, {
+    const dataForBackend = {
+      id: input.Id,
+      movename: input.Move,
+      creator: input.Creator,
+      hox: input.HOX,
+      link: input.Link,
+    };
+    fetch(baseURL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(input),
+      body: JSON.stringify(dataForBackend),
     })
       .then(getAllMoves)
       .then(() => {
