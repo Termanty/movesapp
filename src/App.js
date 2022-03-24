@@ -23,7 +23,7 @@ const App = () => {
           Move: move.movename,
           Creator: move.creator || "",
           HOX: move.hox || "",
-          Link: move.ling || "",
+          Link: move.link || "",
         }));
         console.log(cleanedData);
         setMoves(cleanedData);
