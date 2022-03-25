@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/movesapp/static/css/main.ff9256fc.chunk.css",
-    "main.js": "/movesapp/static/js/main.fd5b45f7.chunk.js",
-    "main.js.map": "/movesapp/static/js/main.fd5b45f7.chunk.js.map",
+    "main.js": "/movesapp/static/js/main.bdebc608.chunk.js",
+    "main.js.map": "/movesapp/static/js/main.bdebc608.chunk.js.map",
     "runtime-main.js": "/movesapp/static/js/runtime-main.d4c2c562.js",
     "runtime-main.js.map": "/movesapp/static/js/runtime-main.d4c2c562.js.map",
-    "static/js/2.f491356e.chunk.js": "/movesapp/static/js/2.f491356e.chunk.js",
-    "static/js/2.f491356e.chunk.js.map": "/movesapp/static/js/2.f491356e.chunk.js.map",
+    "static/js/2.b5252884.chunk.js": "/movesapp/static/js/2.b5252884.chunk.js",
+    "static/js/2.b5252884.chunk.js.map": "/movesapp/static/js/2.b5252884.chunk.js.map",
     "index.html": "/movesapp/index.html",
     "static/css/main.ff9256fc.chunk.css.map": "/movesapp/static/css/main.ff9256fc.chunk.css.map",
-    "static/js/2.f491356e.chunk.js.LICENSE.txt": "/movesapp/static/js/2.f491356e.chunk.js.LICENSE.txt",
+    "static/js/2.b5252884.chunk.js.LICENSE.txt": "/movesapp/static/js/2.b5252884.chunk.js.LICENSE.txt",
     "static/media/UP_logo_light_background.762d73d2.svg": "/movesapp/static/media/UP_logo_light_background.762d73d2.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.d4c2c562.js",
-    "static/js/2.f491356e.chunk.js",
+    "static/js/2.b5252884.chunk.js",
     "static/css/main.ff9256fc.chunk.css",
-    "static/js/main.fd5b45f7.chunk.js"
+    "static/js/main.bdebc608.chunk.js"
   ]
 }
